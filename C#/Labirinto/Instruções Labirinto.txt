@@ -1,0 +1,33 @@
+Do projeto do Labirinto, apenas um novo elemento no mapa é inserido para modificar as
+prioridades de movimento.
+Será dada uma entrada em arquivo texto, onde na primeira linha contém as dimensões do
+labirinto (Linhas Colunas) e nas demais linhas o labirinto em si, em que:
+- 1 indica uma parede (isto é, não pode seguir neste ponto da matriz)
+- 0 indica um caminho possível de se trafegar
+- X é o ponto de partida (não necessariamente é um canto do mapa)
+- A é um alimento que força a mudança na ordem de movimento. Uma vez que se alcança esta
+posição, a posição no mapa com A muda para 0 (isto é, se por alguma razão voltar para este
+ponto do mapa, a ordem de movimento não é modificada novamente). Pode ter mais de um A
+no mapa
+
+O objetivo é encontrar a única saída, sem "andar pelas paredes" e seguindo a seguinte ordem
+de prioridade (quando puder se deslocar):
+1) Ir para cima (C)
+2) Ir para a esquerda (E)
+3) Ir para a direita (D)
+4) Ir para baixo (B)
+
+Uma vez que alcançou um elemento A, a ordem das prioridades modifica de forma que o que é
+1) se torna 4) e todos os outros são promovidos a uma posição acima (2) se torna prioridade 1),
+3) se torna prioridade 2), e 4) se torna prioridade 3)).
+
+Caso se alcance um ponto em que não é possível se movimentar e/ou não tenham mais posições
+que ainda não foram visitadas, deve-se retornar usando o mesmo caminho utilizado até este
+ponto “sem-saída” até o último ponto onde teve mais de uma posição possível de movimento. A
+ordem de movimento só é utilizada quando há mais de uma posição possível de movimento para
+posições ainda não visitadas.
+
+A saída se encontra no ponto 0 localizado em uma extremidade da matriz.
+Cada passo do trajeto deve ser indicado em arquivo texto de saída, onde cada linha indica a
+direção e posição destinada. A primeira linha da saída deve estar com O (origem) seguido da
+posição inicial.
